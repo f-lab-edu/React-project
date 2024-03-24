@@ -4,7 +4,6 @@ const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const isDev = process.env.NODE_ENV === 'dev';
-console.log('process.env.NODE_ENV: ', process.env.NODE_ENV);
 
 module.exports = {
   mode: isDev ? 'development' : 'production',
@@ -33,9 +32,6 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          },
         },
       },
     ],
