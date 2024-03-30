@@ -1,6 +1,7 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -16,8 +17,9 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       linkType: false,
-      filename: '[name]..css',
+      filename: '[name].css',
       chunkFilename: '[name].css',
     }),
+    new ForkTsCheckerWebpackPlugin(),
   ],
 });
