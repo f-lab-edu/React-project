@@ -8,9 +8,12 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # dependencies
-/node_modules
+node_modules
+/.pnp
+.pnp.js
 
 # build
+build
 dist
 dist-ssr
 
@@ -18,14 +21,17 @@ dist-ssr
 .env
 .env*.local
 
-# plugin
+# typescript
+*.tsbuildinfo
+
+# misc
+.DS_Store
 .eslintcache
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj

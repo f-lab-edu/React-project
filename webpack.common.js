@@ -1,14 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const isDev = process.env.NODE_ENV === 'dev';
 
 module.exports = {
-  mode: isDev ? 'development' : 'production',
   entry: {
-    app: './src/index.jsx',
+    app: './src/app/index.tsx',
   },
   output: {
     filename: '[name].bundle.js',
@@ -16,23 +12,14 @@ module.exports = {
     clean: true,
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
     rules: [
       {
-        test: /\.css.ts$/,
-        use: [
-          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-        ],
-      },
-      {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: ['babel-loader'],
       },
     ],
   },
@@ -44,14 +31,5 @@ module.exports = {
     new VanillaExtractPlugin({
       identifiers: ({ hash }) => `prefix_${hash}`,
     }),
-    ...(isDev
-      ? []
-      : [
-          new MiniCssExtractPlugin({
-            linkType: false,
-            filename: '[name]..css',
-            chunkFilename: '[name].css',
-          }),
-        ]),
   ],
 };
