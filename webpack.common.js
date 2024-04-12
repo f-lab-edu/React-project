@@ -4,7 +4,7 @@ const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/app/index.tsx',
+    app: path.join(__dirname, 'src/app', 'index.tsx'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -12,6 +12,9 @@ module.exports = {
     clean: true,
   },
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
@@ -21,15 +24,18 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: path.resolve(__dirname, 'public/index.html'),
       filename: 'index.html',
+      publicPath: '/',
     }),
-    new VanillaExtractPlugin({
-      identifiers: ({ hash }) => `prefix_${hash}`,
-    }),
+    new VanillaExtractPlugin(),
   ],
 };
