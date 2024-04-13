@@ -3,12 +3,17 @@
   "exclude": [
     "node_modules",
     "webpack.*.js",
-    "jest.config.js"
+    "jest.config.js",
+    "**/dist/**"
   ],
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "target": "ES6",
     "jsx": "preserve",
-    "module": "ES6",
+    "module": "es2015",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowJs": true,
