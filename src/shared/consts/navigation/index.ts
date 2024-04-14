@@ -1,0 +1,1 @@
+export { navMenu } from './navMenu';
