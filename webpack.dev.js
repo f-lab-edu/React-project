@@ -7,15 +7,15 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.css.ts$/,
+        test: /\.vanilla\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
     ],
   },
   devServer: {
-    static: './dist',
-    port: 3000,
+    port: 3100,
     open: true,
     hot: true,
+    historyApiFallback: true,
   },
 });
