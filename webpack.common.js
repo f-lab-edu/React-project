@@ -1,6 +1,13 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
+const dotenv = require('dotenv');
+
+const env = process.env.NODE_ENV;
+dotenv.config({
+  path: path.join(__dirname, `.env.${env}`),
+});
 
 module.exports = {
   entry: {
@@ -37,5 +44,8 @@ module.exports = {
       publicPath: '/',
     }),
     new VanillaExtractPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
   ],
 };

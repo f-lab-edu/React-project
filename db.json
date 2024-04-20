@@ -1,0 +1,62 @@
+{
+  "post1": [
+    {
+      "id": "4dce782d-5ab5-44fd-ad10-abbb89182f0a",
+      "title": "post1-1 title",
+      "content": "post1-1 content",
+      "writer": "142.250.190.78",
+      "views": 12
+    },
+    {
+      "id": "6e220bbd-bf41-42c4-9f43-d38bdd9a5d64",
+      "title": "post1-2 title",
+      "content": "post1-2 content",
+      "writer": "142.250.190.78",
+      "views": 123
+    },
+    {
+      "id": "36275d5f-f831-4177-99fe-cfc844434917",
+      "title": "post1-3 title",
+      "content": "post1-3 content",
+      "writer": "183.96.212.19",
+      "views": 0
+    }
+  ],
+  "post2": [
+    {
+      "id": "c7ca8f2d-9aaa-4c0b-96ee-b78cd828635e",
+      "title": "post2-1 title",
+      "content": "post2-1 content",
+      "views": 10000
+    },
+    {
+      "id": "1314573d-9a38-436f-b5bb-ea6da1c0c044",
+      "title": "post2-2 title",
+      "content": "post2-2 content",
+      "views": 20000
+    }
+  ],
+  "user": [
+    {
+      "id": "93.184.216.34",
+      "name": "93.184.216.34"
+    },
+    {
+      "id": "142.250.190.78",
+      "name": "142.250.190.78"
+    },
+    {
+      "id": "216.58.214.14",
+      "name": "216.58.214.14"
+    }
+  ],
+  "comments": [
+    {
+      "userId": "93.184.216.34",
+      "postId": "4dce782d-5ab5-44fd-ad10-abbb89182f0a",
+      "updatedAt": "2024-04-19 15:54:13",
+      "content": "comments 1",
+      "id": "1"
+    }
+  ]
+}

@@ -23,6 +23,7 @@ export const nav = style([
   }),
   {
     padding: '0 14px',
+    height: '55px',
   },
 ]);
 

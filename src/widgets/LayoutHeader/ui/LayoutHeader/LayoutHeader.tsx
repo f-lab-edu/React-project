@@ -4,6 +4,7 @@ import '@/shared/consts/theme/reset.css';
 import { container, nav, navItem, navLeft, navRight } from './LayoutHeader.css';
 import throttle from 'lodash/throttle';
 import { navMenu } from '@/shared/consts/navigation';
+import { ChangeThemeMode } from '@/features/theme';
 
 export const LayoutHeader = () => {
   const [showLayoutHeader, setShowLayoutHeader] = useState(true);
@@ -40,7 +41,7 @@ export const LayoutHeader = () => {
   return (
     <header className={container}>
       {showLayoutHeader && (
-        <nav className={nav} style={{ height: '55px' }}>
+        <nav className={nav}>
           <div className={navLeft}>
             <div>Logo</div>
           </div>
@@ -50,6 +51,7 @@ export const LayoutHeader = () => {
                 <li className={navItem}>{menu.title}</li>
               </Link>
             ))}
+            <ChangeThemeMode />
           </ul>
         </nav>
       )}

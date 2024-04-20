@@ -1,7 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Error404Page } from '@/pages/error';
-import { MainPage } from '@/pages/main/ui/Page/Page';
-import { Layout } from '@/widgets/Layout/ui/Layout/Layout';
+import { Error404Page } from '@/pages/error/ui';
+import { MainPage } from '@/pages/main/ui/page/Page';
+import { Layout } from '@/widgets/Layout/ui/layout/Layout';
+import { BoardViewPage } from '@/pages/board/ui/page/view/Page';
+import { BoardWritePage } from '@/pages/board/ui';
 
 export const router = createBrowserRouter([
   {
@@ -14,7 +16,20 @@ export const router = createBrowserRouter([
       },
       {
         path: '/board',
-        element: <div>board</div>,
+        children: [
+          {
+            index: true,
+            element: <BoardViewPage />,
+          },
+          {
+            path: 'write',
+            element: <BoardWritePage />,
+          },
+          {
+            path: ':boardId',
+            element: <div>본문</div>,
+          },
+        ],
       },
     ],
   },
