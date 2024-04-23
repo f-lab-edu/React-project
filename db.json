@@ -1,10 +1,11 @@
 {
-  "post1": [
+  "news": [
     {
       "id": "4dce782d-5ab5-44fd-ad10-abbb89182f0a",
       "title": "post1-1 title",
       "content": "post1-1 content",
       "writer": "142.250.190.78",
+      "type": "news",
       "views": 12
     },
     {
@@ -12,6 +13,7 @@
       "title": "post1-2 title",
       "content": "post1-2 content",
       "writer": "142.250.190.78",
+      "type": "news",
       "views": 123
     },
     {
@@ -19,20 +21,25 @@
       "title": "post1-3 title",
       "content": "post1-3 content",
       "writer": "183.96.212.19",
+      "type": "news",
       "views": 0
     }
   ],
-  "post2": [
+  "question": [
     {
       "id": "c7ca8f2d-9aaa-4c0b-96ee-b78cd828635e",
       "title": "post2-1 title",
       "content": "post2-1 content",
+      "writer": "142.250.190.78",
+      "type": "question",
       "views": 10000
     },
     {
       "id": "1314573d-9a38-436f-b5bb-ea6da1c0c044",
       "title": "post2-2 title",
       "content": "post2-2 content",
+      "writer": "142.250.190.78",
+      "type": "question",
       "views": 20000
     }
   ],

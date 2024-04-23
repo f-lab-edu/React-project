@@ -1,9 +1,10 @@
-import { createBrowserRouter } from 'react-router-dom';
-import { Error404Page } from '@/pages/error/ui';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { BoardNotFoundPage, Error404Page } from '@/pages/error/ui';
 import { MainPage } from '@/pages/main/ui/page/Page';
 import { Layout } from '@/widgets/Layout/ui/layout/Layout';
-import { BoardViewPage } from '@/pages/board/ui/page/view/Page';
+import { BoardListPage } from '@/pages/board/ui/page/main/Page';
 import { BoardWritePage } from '@/pages/board/ui';
+import { BoardDetailPage } from '@/pages/board/ui/page/detail/Page';
 
 export const router = createBrowserRouter([
   {
@@ -19,15 +20,20 @@ export const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <BoardViewPage />,
+            element: <BoardListPage />,
           },
           {
             path: 'write',
             element: <BoardWritePage />,
           },
           {
-            path: ':boardId',
-            element: <div>본문</div>,
+            path: ':category',
+            element: <Navigate to="/board" replace={true} />,
+          },
+          {
+            path: ':category/:postId',
+            element: <BoardDetailPage />,
+            errorElement: <BoardNotFoundPage />,
           },
         ],
       },

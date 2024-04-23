@@ -1,17 +1,18 @@
-import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
-import { useCallback } from 'react';
+import { FormEvent, useCallback, useRef } from 'react';
 import { Atom, Input } from '@/shared/ui';
 import { TextArea } from '@/shared/ui/TextArea/TextArea';
 
 interface WriteInputs {
   id: string;
-  title: string | number;
-  content: string | number;
+  title: string;
+  content: string;
 }
 
 export const BoardWritePage = () => {
-  const { register, handleSubmit } = useForm<WriteInputs>();
+  const formRef = useRef<HTMLFormElement>(null);
+  // const queryClient = useQueryClient();
+  // const navigate = useNavigate();
 
   const { mutate } = useMutation({
     mutationFn: async (tt: WriteInputs) => {
@@ -26,21 +27,32 @@ export const BoardWritePage = () => {
 
       const url = process.env.API_URL;
 
-      await fetch(`${url}/news`, {
+      const postResponse = await fetch(`${url}/post1`, {
         headers: {
           'Content-Type': 'application/json',
         },
         method: 'POST',
         body: JSON.stringify({
           ...tt,
+          views: 0,
           id: crypto.randomUUID(),
           writer: ip,
-          views: 0,
         }),
       });
+
+      if (!postResponse.ok) {
+        throw new Error(`HTTP error!: ${postResponse.status}`);
+      }
+
+      return await postResponse.json();
     },
-    // onSuccess: (data) => {},
-    onError: () => {},
+    // onSuccess: (data) => {
+    //   queryClient.invalidateQueries({
+    //     queryKey: ['post1'],
+    //     exact: true,
+    //   });
+    //   navigate('/board', { replace: true });
+    // },
   });
 
   const next = useCallback(
@@ -50,14 +62,26 @@ export const BoardWritePage = () => {
     [mutate],
   );
 
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+    const ref = formRef.current;
+    if (!ref) return null;
+
+    const formData = new FormData(ref);
+    const formProps: Record<string, FormDataEntryValue> =
+      Object.fromEntries(formData);
+
+    next(formProps as unknown as WriteInputs);
+  };
+
   return (
     <div>
-      <form onSubmit={handleSubmit(next)}>
-        <Input {...register('title', { required: true })} />
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <Input name="title" placeholder="제목을 입력해주세요" />
         <Atom border="1" color="gray">
-          <TextArea {...register('content')} />
+          <TextArea name="content" placeholder="내용을 입력해주세요" />
         </Atom>
-        <Input type="submit" />
+        <button>Send</button>
       </form>
     </div>
   );
