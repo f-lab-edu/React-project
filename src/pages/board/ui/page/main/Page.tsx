@@ -44,14 +44,14 @@ export const BoardList = () => {
         </div>
       ))}
       <div>
-        <Link to="/board/write">게시글 작성</Link>
+        <Link to="/board/write">write</Link>
       </div>
     </div>
   );
 };
 
 const Suspensed = () => (
-  <Suspense fallback={<div>데이터를 가져오는중...</div>}>
+  <Suspense fallback={<div>fetching...</div>}>
     <BoardList />
   </Suspense>
 );

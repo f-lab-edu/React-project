@@ -2,6 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { FormEvent, useCallback, useRef } from 'react';
 import { Atom, Input } from '@/shared/ui';
 import { TextArea } from '@/shared/ui/TextArea/TextArea';
+import { useNavigate } from 'react-router-dom';
 
 interface WriteInputs {
   id: string;
@@ -11,8 +12,7 @@ interface WriteInputs {
 
 export const BoardWritePage = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  // const queryClient = useQueryClient();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const { mutate } = useMutation({
     mutationFn: async (tt: WriteInputs) => {
@@ -46,13 +46,9 @@ export const BoardWritePage = () => {
 
       return await postResponse.json();
     },
-    // onSuccess: (data) => {
-    //   queryClient.invalidateQueries({
-    //     queryKey: ['post1'],
-    //     exact: true,
-    //   });
-    //   navigate('/board', { replace: true });
-    // },
+    onSuccess: () => {
+      navigate('/board', { replace: true });
+    },
   });
 
   const next = useCallback(
