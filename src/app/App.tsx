@@ -1,9 +1,10 @@
+import { Suspense } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes';
 import { ReactQueryProvider } from '@/shared/lib/query/QueryProvider';
-import { Suspense } from 'react';
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
 import { ThemeProvider } from '@/shared/lib';
+import { IpProvider } from '@/shared/lib/ip/IpProvider';
 
 const Spinner = () => <div>Spinner...</div>;
 
@@ -19,7 +20,9 @@ const App = () => (
     <ErrorBoundary FallbackComponent={Error}>
       <ThemeProvider>
         <ReactQueryProvider>
-          <RouterProvider router={router} />
+          <IpProvider>
+            <RouterProvider router={router} />
+          </IpProvider>
         </ReactQueryProvider>
       </ThemeProvider>
     </ErrorBoundary>

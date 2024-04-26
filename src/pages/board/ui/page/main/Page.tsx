@@ -1,15 +1,15 @@
-import { fetchGET } from '@/shared/api/base.api';
-import { useSuspenseQueries } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
 import { Suspense, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { withErrorBoundary } from 'react-error-boundary';
+import { useSuspenseQueries } from '@tanstack/react-query';
+import { fetchGET } from '@/shared/api/base.api';
 
 interface PostItem {
   id: string;
   title: string;
   content: string;
   writer: string;
-  type: string;
+  category: string;
   views: number;
 }
 
@@ -24,7 +24,7 @@ export const BoardList = () => {
       {
         queryKey: ['question'],
         queryFn: () => fetchGET('question'),
-        staleTime: 30 * 1000,
+        staleTime: 60 * 1000,
       },
     ],
   });
@@ -33,16 +33,21 @@ export const BoardList = () => {
 
   return (
     <div>
-      {posts.map((item: PostItem) => (
-        <div key={item.id} style={{ border: '1px solid gray' }}>
-          <Link to={`/board/${item.type}/${item.id}`}>
-            <div>제목: {item.title}</div>
-            <div>내용 요약: {item.content}</div>
-            <div>조회 수: {item.views}</div>
-            <div>타입: {item.type}</div>
-          </Link>
-        </div>
-      ))}
+      <div>
+        {posts.map((item: PostItem) => (
+          <div
+            key={item.id}
+            style={{ border: '1px solid gray', padding: '10px' }}
+          >
+            <Link to={`/board/${item.category}/${item.id}`}>
+              <div>{item.title}</div>
+              <p>{item.content}</p>
+              <div>조회 수: {item.views}</div>
+              <div>타입: {item.category}</div>
+            </Link>
+          </div>
+        ))}
+      </div>
       <div>
         <Link to="/board/write">write</Link>
       </div>

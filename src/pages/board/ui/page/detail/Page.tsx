@@ -1,13 +1,14 @@
 import { Suspense, useEffect, useState } from 'react';
 import { withErrorBoundary } from 'react-error-boundary';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { fetchGET } from '@/shared/api/base.api';
-import { CommentsList } from '@/widgets/comment';
-import { AddComment } from '@/features/comment/addition';
+import { CommentsList } from '@/widgets/comment/list';
+import { CreateComment } from '@/widgets/comment/create';
 
 const BoardDetail = () => {
   const [isLoadedDetail, setIsLoadedDetail] = useState(false);
+  const navigate = useNavigate();
   const { category, postId } = useParams() as {
     category: string;
     postId: string;
@@ -34,22 +35,27 @@ const BoardDetail = () => {
     staleTime: 60 * 1000,
   });
 
-  if (isLoading) return <div>Skeleton UI</div>;
+  if (isLoading) return <div>loading..</div>;
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
   return data ? (
     <div>
       <div>
-        <h2>Title: {data.title}</h2>
-        <h4>Content: {data.content}</h4>
-        <h5>Views: {data.views}</h5>
+        <h2>{data.title}</h2>
+        <h4>{data.content}</h4>
+        <h5>{data.views}</h5>
       </div>
       {commentsLoading && <div>loading...</div>}
       {comments && (
         <>
           <CommentsList comments={comments} />
-          <AddComment category={category} postId={postId} />
+          <CreateComment category={category} postId={postId} />
         </>
       )}
+      <button onClick={handleGoBack}>back</button>
     </div>
   ) : (
     <div>Empty content!</div>
@@ -65,7 +71,7 @@ const Suspensed = () => (
 export const BoardDetailPage = withErrorBoundary(Suspensed, {
   fallbackRender: ({ resetErrorBoundary }) => (
     <div>
-      There was an error!
+      error!
       <button onClick={() => resetErrorBoundary()}>Try Again!</button>
       <button onClick={() => window.history.go(-1)}>back</button>
     </div>

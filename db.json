@@ -3,9 +3,9 @@
     {
       "id": "4dce782d-5ab5-44fd-ad10-abbb89182f0a",
       "title": "post1-1 title",
-      "content": "The issue here is not with the composition time, but with the GPU load. In other words, it’s not a library bug; it’s simply that the GPU is struggling. I’ve faced a similar issue even in online paint. Providing a demo is challenging, but I guess you could achieve this effect by heavily loading the GPU (e.g., using a benchmark) and then using the Draw interraction.       Regarding the separate canvas, yes, that was my initial attempt. I added className: \"draw-layer\" here. However, the main canvas still updates during events. Currently, the idea is to add here a simple check (smth like event.originalEvent.target.className === \"draw-layer\" && layer !== sketchLayer) and and ignore move events for all layers except sketchlayer.",
+      "content": "post1-1 content",
       "writer": "142.250.190.78",
-      "type": "news",
+      "category": "news",
       "views": 12
     },
     {
@@ -13,7 +13,7 @@
       "title": "post1-2 title",
       "content": "post1-2 content",
       "writer": "142.250.190.78",
-      "type": "news",
+      "category": "news",
       "views": 123
     },
     {
@@ -21,8 +21,15 @@
       "title": "post1-3 title",
       "content": "post1-3 content",
       "writer": "183.96.212.19",
-      "type": "news",
+      "category": "news",
       "views": 0
+    },
+    {
+      "id": "a39f1c56-2b0e-4d15-8be5-295c1adc3bc4",
+      "title": "11",
+      "content": "11",
+      "views": 0,
+      "writer": "183.96.212.19"
     }
   ],
   "question": [
@@ -31,7 +38,7 @@
       "title": "post2-1 title",
       "content": "post2-1 content",
       "writer": "142.250.190.78",
-      "type": "question",
+      "category": "question",
       "views": 10000
     },
     {
@@ -39,8 +46,15 @@
       "title": "post2-2 title",
       "content": "post2-2 content",
       "writer": "142.250.190.78",
-      "type": "question",
+      "category": "question",
       "views": 20000
+    },
+    {
+      "id": "147a57d8-2c30-4eed-81d8-7ebf3841cc2b",
+      "title": "asdfc",
+      "content": "adfv",
+      "views": 0,
+      "writer": "183.96.212.19"
     }
   ],
   "user": [
@@ -59,11 +73,13 @@
   ],
   "comments": [
     {
-      "userId": "93.184.216.34",
+      "id": "3d2c",
+      "userId": "183.96.212.19",
       "postId": "4dce782d-5ab5-44fd-ad10-abbb89182f0a",
-      "commentId": "1",
-      "updatedAt": "2024-04-19 15:54:13",
-      "content": "Just a last (but no least) note: import() may looks like a function call, but it isn't a Function. It's a special syntax that just happens to use parentheses (similar to what happens with super()). So it's not possible to assign import to a variable or use things of the Function prototype, like call/apply."
+      "category": "news",
+      "commentId": "1714143585986",
+      "updatedAt": "2024-04-26T14:59:45.986Z",
+      "content": "11111"
     }
   ]
 }

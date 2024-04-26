@@ -1,4 +1,5 @@
 import React, {
+  ReactNode,
   createContext,
   useContext,
   useEffect,
@@ -17,7 +18,7 @@ const ThemeContext = createContext<ThemeModeContextValues>({
   setMode: () => {},
 });
 
-export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [mode, setMode] = useState<Mode>('light');
 
   const modeValue = useMemo(
