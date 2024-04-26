@@ -5,7 +5,7 @@ interface navMenuItem {
 
 export const navMenu: navMenuItem[] = [
   {
-    title: '게시판',
+    title: 'BOARD',
     link: '/board',
   },
 ];

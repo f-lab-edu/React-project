@@ -1,7 +1,7 @@
 import { AllHTMLAttributes, createElement, forwardRef } from 'react';
 import clsx, { ClassValue } from 'clsx';
 import { atoms, Atoms } from '../../lib/theme/atoms';
-import { sprinkles } from '../../consts/theme/sprinkles.css';
+import { sprinkles } from '@/shared/consts/theme';
 
 type HTMLProperties<T = HTMLElement> = Omit<AllHTMLAttributes<T>, 'className'>;
 

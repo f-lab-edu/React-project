@@ -1,0 +1,85 @@
+{
+  "news": [
+    {
+      "id": "4dce782d-5ab5-44fd-ad10-abbb89182f0a",
+      "title": "post1-1 title",
+      "content": "post1-1 content",
+      "writer": "142.250.190.78",
+      "category": "news",
+      "views": 12
+    },
+    {
+      "id": "6e220bbd-bf41-42c4-9f43-d38bdd9a5d64",
+      "title": "post1-2 title",
+      "content": "post1-2 content",
+      "writer": "142.250.190.78",
+      "category": "news",
+      "views": 123
+    },
+    {
+      "id": "36275d5f-f831-4177-99fe-cfc844434917",
+      "title": "post1-3 title",
+      "content": "post1-3 content",
+      "writer": "183.96.212.19",
+      "category": "news",
+      "views": 0
+    },
+    {
+      "id": "a39f1c56-2b0e-4d15-8be5-295c1adc3bc4",
+      "title": "11",
+      "content": "11",
+      "views": 0,
+      "writer": "183.96.212.19"
+    }
+  ],
+  "question": [
+    {
+      "id": "c7ca8f2d-9aaa-4c0b-96ee-b78cd828635e",
+      "title": "post2-1 title",
+      "content": "post2-1 content",
+      "writer": "142.250.190.78",
+      "category": "question",
+      "views": 10000
+    },
+    {
+      "id": "1314573d-9a38-436f-b5bb-ea6da1c0c044",
+      "title": "post2-2 title",
+      "content": "post2-2 content",
+      "writer": "142.250.190.78",
+      "category": "question",
+      "views": 20000
+    },
+    {
+      "id": "147a57d8-2c30-4eed-81d8-7ebf3841cc2b",
+      "title": "asdfc",
+      "content": "adfv",
+      "views": 0,
+      "writer": "183.96.212.19"
+    }
+  ],
+  "user": [
+    {
+      "id": "93.184.216.34",
+      "name": "93.184.216.34"
+    },
+    {
+      "id": "142.250.190.78",
+      "name": "142.250.190.78"
+    },
+    {
+      "id": "216.58.214.14",
+      "name": "216.58.214.14"
+    }
+  ],
+  "comments": [
+    {
+      "id": "3d2c",
+      "userId": "183.96.212.19",
+      "postId": "4dce782d-5ab5-44fd-ad10-abbb89182f0a",
+      "category": "news",
+      "commentId": "1714143585986",
+      "updatedAt": "2024-04-26T14:59:45.986Z",
+      "content": "11111"
+    }
+  ]
+}

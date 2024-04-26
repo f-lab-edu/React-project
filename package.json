@@ -17,6 +17,7 @@
   "packageManager": "pnpm@8.15.5",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack serve --progress --open --config webpack.dev.js",
+    "dev:json-server": "json-server --watch db.json --port 3200",
     "type-check": "tsc --noEmit",
     "build:dev": "cross-env NODE_ENV=production webpack serve --progress --config webpack.prod.js",
     "build": "cross-env NODE_ENV=production webpack --progress --config webpack.prod.js",
@@ -31,16 +32,19 @@
     ]
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.29.2",
     "@vanilla-extract/css": "^1.14.2",
     "@vanilla-extract/recipes": "^0.5.2",
     "@vanilla-extract/sprinkles": "^1.6.1",
     "clsx": "^2.1.0",
     "deepmerge": "^4.3.1",
+    "json-server": "1.0.0-alpha.23",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^4.0.13",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
@@ -48,8 +52,10 @@
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
     "@svgr/webpack": "^8.1.0",
+    "@tanstack/eslint-plugin-query": "^5.28.11",
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.17.0",
+    "@types/node": "^20.12.7",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "@types/react-router-dom": "^5.3.3",
